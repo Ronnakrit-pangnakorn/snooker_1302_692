@@ -8,8 +8,17 @@ public class Hole : MonoBehaviour
         
         if (b != null)
         {
-            Gamemanager.instance.PlayerScore += b.Point;
-            Destroy(b.gameObject);
+            if (b.Point == 0)
+
+            {
+                Gamemanager.instance.Showstring($"White ball Drop!\nYou Lose");
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Gamemanager.instance.ShowScoreText(b.Point);
+                Destroy(b.gameObject);
+            }
         }
 
     }

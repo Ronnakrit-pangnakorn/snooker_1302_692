@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using TMPro;
 
 public class Gamemanager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Gamemanager : MonoBehaviour
 
     [SerializeField]
     private GameObject[] ballposition;
-    
+
     [SerializeField]
     private GameObject ballPrefads;
 
@@ -26,6 +27,9 @@ public class Gamemanager : MonoBehaviour
     [SerializeField]
     private GameObject cam;
 
+    [SerializeField]
+    private TMP_Text notiText;
+
     public static Gamemanager instance;
 
     private void Awake()
@@ -34,7 +38,7 @@ public class Gamemanager : MonoBehaviour
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    
+
     {
         CameraBehindCueball();
 
@@ -66,16 +70,16 @@ public class Gamemanager : MonoBehaviour
             StopBall();
     }
 
-    
+
     private void SetBall(Ballcolor col, int i)
     {
-        GameObject obj = Instantiate(ballPrefads,ballposition[i].transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(ballPrefads, ballposition[i].transform.position, Quaternion.identity);
         scripts_balls b = obj.GetComponent<scripts_balls>();
         b.SetcolorAndPoint(col);
     }
 
     private void Shootball()
-    { 
+    {
         Rigidbody rd = cueBall.GetComponent<Rigidbody>();
         rd.AddRelativeForce(Vector3.forward * 50, ForceMode.Impulse);
 
@@ -87,7 +91,7 @@ public class Gamemanager : MonoBehaviour
 
     private void RotateBall()
     {
-        if (cueBall !=null)
+        if (cueBall != null)
             cueBall.transform.Rotate(new Vector3(0f, xInput, 0f));
     }
 
@@ -96,7 +100,7 @@ public class Gamemanager : MonoBehaviour
         Rigidbody rd = cueBall.GetComponent<Rigidbody>();
         rd.linearVelocity = Vector3.zero;
         rd.angularVelocity = Vector3.zero;
-        cueBall.transform.eulerAngles =  new Vector3(0f,0f,0f);
+        cueBall.transform.eulerAngles = new Vector3(0f, 0f, 0f);
 
         ballLine.SetActive(true);
         CameraBehindCueball();
@@ -108,6 +112,18 @@ public class Gamemanager : MonoBehaviour
         cam.transform.parent = cueBall.transform;
         cam.transform.position = cueBall.transform.position + new Vector3(0f, 7f, -15f);
         cam.transform.eulerAngles = new Vector3(30f, 0f, 0f);
+    }
+
+
+    public void ShowScoreText(int n)
+    {
+        playerScore += n;
+        notiText.text = $"Ball Point: {n}\nTotal Score:{playerScore}" ;
+    }
+
+    public void Showstring(string s)
+    {
+        notiText.text = s;
     }
 }
 
