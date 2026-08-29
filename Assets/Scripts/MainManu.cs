@@ -17,7 +17,7 @@ public class MainManu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("scene01");
+        SceneManager.LoadScene("Loading");
     }
 
     public void ExitGame()
