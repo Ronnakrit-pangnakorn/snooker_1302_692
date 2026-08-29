@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6666612441760448930}
   - component: {fileID: 8569002501324382085}
   - component: {fileID: 7627041322650194224}
+  - component: {fileID: 5304904195478637500}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -125,3 +126,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faa13e0ec5252c4ba5673d386eae072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::scripts_balls
+  point: 0
+  color: 0
+  rd: {fileID: 0}
+--- !u!54 &5304904195478637500
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408622809661629308}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
